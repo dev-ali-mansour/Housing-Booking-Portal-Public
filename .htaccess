@@ -1,0 +1,76 @@
+RewriteEngine on
+
+Options +Multiviews
+
+RewriteEngine on
+
+Options +Multiviews
+# Home Page
+RewriteRule ^admin/home$ admin/index.php
+# User Groups
+RewriteRule ^admin/user-groups/new$ admin/new-user-group.php
+RewriteRule ^admin/user-groups/update$ admin/update-user-group.php
+RewriteRule ^admin/user-groups/update/([\d]+)$ admin/update-user-group.php?id=$1
+RewriteRule ^admin/user-groups/delete$ admin/delete.php?target=group
+RewriteRule ^admin/user-groups/delete/([\d]+)$ admin/delete.php?target=group&id=$1
+RewriteRule ^admin/user-groups/list$ admin/view-user-groups.php
+RewriteRule ^admin/user-groups/list/([\d]+)$ admin/view-user-groups.php?page=$1
+# Users
+RewriteRule ^admin/users/new$ admin/new-user.php
+RewriteRule ^admin/users/update$ admin/update-user.php
+RewriteRule ^admin/users/update/([\d]+)$ admin/update-user.php?id=$1
+RewriteRule ^admin/users/delete$ admin/delete.php?target=user
+RewriteRule ^admin/users/delete/([\d]+)$ admin/delete.php?target=user&id=$1
+RewriteRule ^admin/users/list$ admin/view-users.php
+RewriteRule ^admin/users/list/([\d]+)$ admin/view-users.php?page=$1
+# Members
+RewriteRule ^admin/members/new$ admin/new-member.php
+RewriteRule ^admin/members/update$ admin/update-member.php
+RewriteRule ^admin/members/update/([\d]+)$ admin/update-member.php?id=$1
+RewriteRule ^admin/members/delete/([\d]+)$ admin/delete.php?target=member&id=$1
+RewriteRule ^admin/members/list$ admin/view-members.php
+RewriteRule ^admin/members/list/([\d]+)$ admin/view-members.php?page=$1
+# Projects
+RewriteRule ^admin/projects/new$ admin/new-project.php
+RewriteRule ^admin/projects/update$ admin/update-project.php
+RewriteRule ^admin/projects/update/([\d]+)$ admin/update-project.php?id=$1
+RewriteRule ^admin/projects/delete/([\d]+)$ admin/delete.php?target=project&id=$1
+RewriteRule ^admin/projects/list$ admin/view-projects.php
+RewriteRule ^admin/projects/list/([\d]+)$ admin/view-projects.php?page=$1
+# Flat Reservations
+RewriteRule ^admin/reservation/flats/new$ admin/new-flat-reservation.php
+RewriteRule ^admin/reservation/flats/update$ admin/update-flat-reservation.php
+RewriteRule ^admin/reservation/flats/update/([\d]+)$ admin/update-flat-reservation.php?id=$1
+RewriteRule ^admin/reservation/flats/delete/([\d]+)$ admin/delete.php?target=reservation&id=$1
+RewriteRule ^admin/reservation/flats/list$ admin/view-flat-reservations.php
+RewriteRule ^admin/reservation/flats/list/([\d]+)$ admin/view-flat-reservations.php?page=$1
+# Deposits
+RewriteRule ^admin/deposits/new$ admin/new-deposit.php
+RewriteRule ^admin/deposits/update$ admin/update-deposit.php
+RewriteRule ^admin/deposits/update/([\d]+)$ admin/update-deposit.php?id=$1
+RewriteRule ^admin/deposits/delete/([\d]+)$ admin/delete.php?target=deposit&id=$1
+RewriteRule ^admin/deposits/list$ admin/view-deposits.php
+RewriteRule ^admin/deposits/list/([\d]+)$ admin/view-deposits.php?page=$1
+RewriteRule ^admin/deposits/print$ admin/view-deposit.php
+# Reports
+RewriteRule ^admin/reports/reserved-flats$ admin/report-reserved-flats.php
+RewriteRule ^admin/reports/deposits$ admin/report-deposits-list.php
+RewriteRule ^admin/reports/member-deposits$ admin/report-member-deposits.php
+RewriteRule ^admin/reports/members$ admin/report-members-list.php
+# Message
+RewriteRule ^admin/message/([\d]+)$ admin/attention-message.php?target=$1
+Options -Indexes
+# Settings
+RewriteRule ^admin/settings$ admin/app-settings.php
+# Database Backup
+RewriteRule ^admin/database/backup$ admin/database-backup.php
+
+# Error Pages
+ErrorDocument 403 http://localhost/housing/admin/home
+ErrorDocument 404 http://localhost/housing/admin/home
+
+# Follow symbolic links
+Options +FollowSymLinks
+
+# Default handler
+DirectoryIndex index.php
